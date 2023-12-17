@@ -6,7 +6,7 @@
         "skipLibCheck": true,
         "moduleResolution": "node",
         "strict": true,
-        "types": [],
+        "types": ["cypress", "node"],
         "noUncheckedIndexedAccess": true,
         "resolveJsonModule": true,
         "esModuleInterop": true,

@@ -3,19 +3,29 @@
     "version": "0.0.0",
     "description": "Cypress Plugin to test applications using the Solid Protocol",
     "main": "dist/index.js",
-    "types": "dist/aerogel-solid.d.ts",
+    "types": "dist/cypress-solid.d.ts",
     "sideEffects": false,
     "repository": "github:noeldemartin/cypress-solid",
     "scripts": {
-        "build": "rm -rf dist && npm run build:js && npm run build:types",
-        "build:js": "esbuild src/index.ts --format=cjs --outdir=dist --sourcemap",
-        "build:types": "noeldemartin-build-types"
+        "build": "rm -rf dist && npm run build:support && npm run build:plugin && npm run build:types",
+        "build:support": "esbuild src/support/index.ts --format=cjs --bundle --sourcemap --outfile=dist/index.js --external:@noeldemartin/utils",
+        "build:plugin": "esbuild src/plugin/index.ts --format=cjs --bundle --sourcemap --outfile=dist/plugin.js --external:@noeldemartin/utils --external:soukai --external:soukai-solid --external:@inrupt/solid-client-authn-core",
+        "build:types": "noeldemartin-build-types",
+        "lint": "noeldemartin-lint src",
+        "publish-next": "noeldemartin-publish-next"
     },
     "author": "Noel De Martin",
     "license": "MIT",
+    "dependencies": {
+        "@inrupt/solid-client-authn-core": "^1.17.5",
+        "@noeldemartin/utils": "0.5.0-next.dce7f1ca99862fde01601bb39d71d0eaaed3abe5",
+        "soukai": "0.5.1-next.14f569ea674927617b371da31d680b4f7068d601",
+        "soukai-solid": "0.5.2-next.b6340345e228903e404a02c1ed9be8fc95162e8f"
+    },
     "devDependencies": {
         "@noeldemartin/eslint-config-typescript": "0.1.1-next.8da46d7532acbe6ee4126f410141b7f281ec349a",
         "@noeldemartin/scripts": "0.2.0-next.4e94aeaec4b1293d85fcec78a10fb026222f4a27",
+        "cypress": "^13.6.1",
         "esbuild": "^0.19.9",
         "eslint": "^8.55.0",
         "prettier": "^3.1.1",
