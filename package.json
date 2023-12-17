@@ -8,8 +8,8 @@
     "repository": "github:noeldemartin/cypress-solid",
     "scripts": {
         "build": "rm -rf dist && npm run build:support && npm run build:plugin && npm run build:types",
-        "build:support": "esbuild src/support/index.ts --format=cjs --bundle --sourcemap --outfile=dist/index.js --external:@noeldemartin/utils",
-        "build:plugin": "esbuild src/plugin/index.ts --format=cjs --bundle --sourcemap --outfile=dist/plugin.js --external:@noeldemartin/utils --external:soukai --external:soukai-solid --external:@inrupt/solid-client-authn-core",
+        "build:support": "esbuild src/support/index.ts --format=cjs --bundle --sourcemap --outfile=dist/index.js --external:@noeldemartin/utils --external:@noeldemartin/solid-utils",
+        "build:plugin": "esbuild src/plugin/index.ts --format=cjs --bundle --sourcemap --outfile=dist/plugin.js --external:@noeldemartin/utils --external:@noeldemartin/solid-utils --external:soukai --external:soukai-solid --external:@inrupt/solid-client-authn-core",
         "build:types": "noeldemartin-build-types",
         "lint": "noeldemartin-lint src",
         "publish-next": "noeldemartin-publish-next"
@@ -18,6 +18,7 @@
     "license": "MIT",
     "dependencies": {
         "@inrupt/solid-client-authn-core": "^1.17.5",
+        "@noeldemartin/solid-utils": "0.3.0-next.5176c3d9efdc3cf9d06772d0c55c24b2eb49893a",
         "@noeldemartin/utils": "0.5.0-next.dce7f1ca99862fde01601bb39d71d0eaaed3abe5",
         "soukai": "0.5.1-next.14f569ea674927617b371da31d680b4f7068d601",
         "soukai-solid": "0.5.2-next.b6340345e228903e404a02c1ed9be8fc95162e8f"

@@ -8,6 +8,13 @@ export interface SolidCypressConfig {
     password: string;
 }
 
+export interface SolidRequestResponse {
+    headers: Headers;
+    status: number;
+    statusText: string;
+    body: string;
+}
+
 export function config(): SolidCypressConfig;
 export function config<TKey extends keyof SolidCypressConfig>(key: TKey): SolidCypressConfig[TKey];
 export function config<TKey extends keyof SolidCypressConfig>(

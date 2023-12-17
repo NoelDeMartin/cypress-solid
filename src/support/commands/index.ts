@@ -1,8 +1,10 @@
 import * as authCommands from './auth';
+import * as crudCommands from './crud';
 import * as tasksCommands from './tasks';
 
 export const commands = {
     ...authCommands,
+    ...crudCommands,
     ...tasksCommands,
 };
 
