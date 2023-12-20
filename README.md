@@ -60,7 +60,7 @@ The default configuration assumes that the server is running on `http://localhos
 
 ## Basic Usage
 
-In tests where you want to interact with the Solid server, you should call `cy.resetSolid()` before starting. It is important to [do it before, and not after](https://docs.cypress.io/guides/references/best-practices#Using-after-Or-afterEach-Hooks), given that if the test fails or is closed unexpectedly, the clean up won't be executed.
+In tests where you want to interact with the Solid server, you should call `cy.solidReset()` before starting. It is important to [do it before, and not after](https://docs.cypress.io/guides/references/best-practices#Using-after-Or-afterEach-Hooks), given that if the test fails or is closed unexpectedly, the clean up won't be executed.
 
 This command will prepare the account in the server, and you can complete the log in form during the authentication process using the `cy.solidLogin()` command.
 
@@ -90,7 +90,7 @@ For a complete example with more advanced functionality, you can check out the [
 
 ## Configuration
 
-In order to customize the plugin's behaviour, you can pass some configuration options to the `setupSolidNodeEvents` call:
+In order to customize the plugin's behaviour, you can pass some configuration options to the `setupSolidNodeEvents` method:
 
 ```ts
 import { defineConfig } from 'cypress';
@@ -105,6 +105,7 @@ export default defineConfig({
                 // ...
             });
 
+            // IMPORTANT Return the updated config object.
             return config;
         },
     },
@@ -118,7 +119,7 @@ Here's the complete list of available options:
 | --------- | ------------------------- | ----------- |
 | serverUrl | `'http://localhost:3000'` | Url where the Solid server is running. |
 | account   | `'alice'`                 | Account name, this will be used to create a new account in the Solid server. For example, `http://localhost:3000/alice/`. |
-| name      | `'Alice Cooper'`          | Display name, this will be declared as `foaf:name` in the user profile. |
+| name      | `'Alice Cooper'`          | Display name, this will be declared as `foaf:name` in the user's profile. |
 | email     | `'alice@example.com'`     | Account email, this can be used to log in. |
 | password  | `'secret'`                | Account password, this can be used to log in. |
 <!-- prettier-ignore-end -->
@@ -144,7 +145,7 @@ The contents of the fixture with the [replacements](#replacements-and-wildcards)
 
 ### `cy.solidCreateContainer(path, name?)`
 
-Creates a Solid container.
+Creates a container in the POD.
 
 #### Arguments
 
@@ -155,9 +156,13 @@ Creates a Solid container.
 | name | `'Container'` | Container name, declared as `rdfs:label` in the document's metadata. |
 <!-- prettier-ignore-end -->
 
+#### Yields
+
+Nothing.
+
 ### `cy.solidCreateDocument(path, fixture, replacements?)`
 
-Creates a Solid document.
+Creates a document in the POD.
 
 #### Arguments
 
@@ -169,9 +174,13 @@ Creates a Solid document.
 | replacements | `{}`          | Object with replacements to apply on the fixture before creating the document. [Learn more about replacements](#replacements-and-wildcards). |
 <!-- prettier-ignore-end -->
 
+#### Yields
+
+Nothing.
+
 ### `cy.solidDeleteDocument(path)`
 
-Deletes a Solid document.
+Deletes a document in the POD.
 
 #### Arguments
 
@@ -181,13 +190,25 @@ Deletes a Solid document.
 | path         | -             | Relative document path. For example, to delete the document at `http://localhost:3000/alice/tasks/1`, you would use `'/tasks/1'`. |
 <!-- prettier-ignore-end -->
 
+#### Yields
+
+Nothing.
+
 ### `cy.solidLogin()`
 
 Authenticates using the test account indicated in [the configuration](#configuration). This command should be called once the authentication process has been started and the application has been redirected to the identity provider.
 
+#### Arguments
+
+None.
+
+#### Yields
+
+Nothing.
+
 ### `cy.solidReadDocument(path)`
 
-Reads a Solid document.
+Reads a document in the POD.
 
 #### Arguments
 
@@ -226,9 +247,17 @@ An object with the following fields:
 
 Creates the account in the server if it didn't exist, and resets the content in the POD to its initial state.
 
+#### Arguments
+
+None.
+
+#### Yields
+
+Nothing.
+
 ### `cy.solidUpdateDocument(path, fixture, replacements?)`
 
-Update a Solid document.
+Updates a document in the POD.
 
 #### Arguments
 
@@ -239,6 +268,10 @@ Update a Solid document.
 | fixture      | -             | Cypress fixture path with the SPARQL updates to apply in the document. For example, for a fixture at `cypress/fixtures/update-task.sparql` you would use `'update-task.sparql'`. |
 | replacements | `{}`          | Object with replacements to apply on the fixture before creating the document. [Learn more about replacements](#replacements-and-wildcards). |
 <!-- prettier-ignore-end -->
+
+#### Yields
+
+Nothing.
 
 ## Helpers
 
@@ -303,6 +336,10 @@ Url for the given path. For example, for the `'/.account/'` path with the defaul
 ### `webId()`
 
 Get test account webId. You can use this to log in in your application without hard-coding any urls.
+
+#### Arguments
+
+None.
 
 #### Returns
 
@@ -431,4 +468,4 @@ it('Watch a movie', () => {
 });
 ```
 
-In this case, we're using two wildcards. One for the value of `schema:startTime`, which is a date generated at runtime; and one for the `schema:WatchAction` resource id, which could be an id generated dynamically.
+In this case, we're using two wildcards. One for the value of `schema:startTime`, which is a date generated at runtime; and one for the fragment of the `schema:WatchAction` resource id, which could be a string generated dynamically.
