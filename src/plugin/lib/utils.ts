@@ -1,6 +1,6 @@
 import type { Closure, ClosureArgs } from '@noeldemartin/utils';
 
-import type { SolidCypressConfig } from '../../shared';
+import type { CypressSolidConfig } from '../../shared';
 
 export function log(...messages: [string, ...unknown[]]): void {
     const [firstMessage, ...otherMessages] = messages;
@@ -11,7 +11,7 @@ export function log(...messages: [string, ...unknown[]]): void {
 
 export function defineTask<TArgs extends ClosureArgs>(
     task: Closure<TArgs, unknown>,
-): Closure<[{ config: SolidCypressConfig; args: TArgs }], Promise<unknown>> {
+): Closure<[{ config: CypressSolidConfig; args: TArgs }], Promise<unknown>> {
     return async ({ config, args }) => {
         if (!globalThis.cypressSolidConfig) {
             globalThis.cypressSolidConfig = config;

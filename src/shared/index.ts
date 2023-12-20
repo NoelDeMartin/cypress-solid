@@ -1,6 +1,6 @@
 import { fail } from '@noeldemartin/utils';
 
-export interface SolidCypressConfig {
+export interface CypressSolidConfig {
     serverUrl: string;
     account: string;
     name: string;
@@ -8,22 +8,22 @@ export interface SolidCypressConfig {
     password: string;
 }
 
-export interface SolidRequestResponse {
+export interface CypressSolidResponse {
     headers: Headers;
     status: number;
     statusText: string;
     body: string;
 }
 
-export function config(): SolidCypressConfig;
-export function config<TKey extends keyof SolidCypressConfig>(key: TKey): SolidCypressConfig[TKey];
-export function config<TKey extends keyof SolidCypressConfig>(
+export function config(): CypressSolidConfig;
+export function config<TKey extends keyof CypressSolidConfig>(key: TKey): CypressSolidConfig[TKey];
+export function config<TKey extends keyof CypressSolidConfig>(
     key?: TKey,
-): SolidCypressConfig[TKey] | SolidCypressConfig {
+): CypressSolidConfig[TKey] | CypressSolidConfig {
     const values =
-        globalThis.top?.cypressSolidConfig ??
         globalThis.cypressSolidConfig ??
-        fail<SolidCypressConfig>('cypress-solid config not available yet');
+        Cypress.config('__solid__') ??
+        fail<CypressSolidConfig>('cypress-solid config not available yet');
 
     return key ? values[key] : values;
 }

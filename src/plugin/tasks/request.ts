@@ -2,7 +2,7 @@ import type { GetClosureArgs } from '@noeldemartin/utils';
 
 import { authenticate } from '../lib/auth';
 import { defineTask, log } from '../lib/utils';
-import type { SolidRequestResponse } from '../../shared';
+import type { CypressSolidResponse } from '../../shared';
 
 export default defineTask(async (...args: GetClosureArgs<typeof fetch>) => {
     log(`${args[1]?.['method'] ?? 'GET'} ${args[0]}...`);
@@ -12,7 +12,7 @@ export default defineTask(async (...args: GetClosureArgs<typeof fetch>) => {
 
     log(`Response: ${response.status}`);
 
-    const solidResponse: SolidRequestResponse = {
+    const solidResponse: CypressSolidResponse = {
         headers: response.headers,
         status: response.status,
         statusText: response.statusText,
