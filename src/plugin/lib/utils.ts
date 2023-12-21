@@ -1,12 +1,15 @@
+import debug from 'debug';
+import type { Debugger } from 'debug';
 import type { Closure, ClosureArgs } from '@noeldemartin/utils';
 
 import type { CypressSolidConfig } from '../../shared';
 
-export function log(...messages: [string, ...unknown[]]): void {
-    const [firstMessage, ...otherMessages] = messages;
+let logger: Debugger | null = null;
 
-    // eslint-disable-next-line no-console
-    console.log(`[Solid]: ${firstMessage}`, ...otherMessages);
+export function log(...messages: [string, ...unknown[]]): void {
+    logger ??= debug('cypress:solid');
+
+    logger(...messages);
 }
 
 export function defineTask<TArgs extends ClosureArgs>(
