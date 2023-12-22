@@ -83,9 +83,20 @@ async function resetPod(retry: boolean = true): Promise<void> {
 }
 
 export default defineTask(async () => {
-    log(`Resetting POD at ${serverUrl()}...`);
+    try {
+        log(`Resetting POD at ${serverUrl()}...`);
 
-    await resetPod();
+        await resetPod();
 
-    log('POD reset complete.');
+        log('POD reset complete.');
+    } catch (error) {
+        const anyError = error as any; // eslint-disable-line @typescript-eslint/no-explicit-any
+        const errorCode = anyError.code ?? anyError.cause?.code;
+
+        if (errorCode === 'ECONNREFUSED') {
+            return { error: `Could not connect to ${serverUrl()}, are you sure the Solid server is running?` };
+        }
+
+        throw error;
+    }
 });
