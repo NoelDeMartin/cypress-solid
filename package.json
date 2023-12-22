@@ -14,6 +14,14 @@
         "lint": "noeldemartin-lint src",
         "publish-next": "noeldemartin-publish-next"
     },
+    "files": [
+        "dist",
+        "src",
+        "CHANGELOG.md",
+        "config.d.ts",
+        "config.js",
+        "support.js"
+    ],
     "author": "Noel De Martin",
     "license": "MIT",
     "dependencies": {
