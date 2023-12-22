@@ -3,22 +3,32 @@ import * as crudCommands from './crud';
 import * as fixturesCommands from './fixtures';
 import * as tasksCommands from './tasks';
 
-export const commands = {
+export const solidCommands = {
     ...authCommands,
     ...crudCommands,
     ...fixturesCommands,
     ...tasksCommands,
 };
 
+/**
+ * @deprecated use solidCommands instead.
+ */
+export const commands = solidCommands;
+
 export interface SolidOptions {
     solid?: {
         serverUrl?: string;
     };
 }
-export type CustomCommands = typeof commands;
+export type CustomSolidCommands = typeof solidCommands;
+
+/**
+ * @deprecated use CustomSolidCommands instead.
+ */
+export type CustomCommands = CustomSolidCommands;
 
 export default function(): void {
-    for (const [name, implementation] of Object.entries(commands)) {
+    for (const [name, implementation] of Object.entries(solidCommands)) {
         Cypress.Commands.add(
             name as unknown as keyof Cypress.Chainable,
             implementation as Cypress.CommandFn<keyof Cypress.ChainableMethods>,
@@ -28,6 +38,6 @@ export default function(): void {
 
 declare global {
     namespace Cypress {
-        interface Chainable extends CustomCommands {}
+        interface Chainable extends CustomSolidCommands {}
     }
 }
