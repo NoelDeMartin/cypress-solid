@@ -1,6 +1,6 @@
 {
     "name": "cypress-solid",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Cypress Plugin to test applications using the Solid Protocol",
     "main": "dist/index.js",
     "types": "dist/cypress-solid.d.ts",
