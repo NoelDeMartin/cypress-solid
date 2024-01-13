@@ -20,6 +20,7 @@
         "CHANGELOG.md",
         "config.d.ts",
         "config.js",
+        "support.d.ts",
         "support.js"
     ],
     "author": "Noel De Martin",
