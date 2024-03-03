@@ -10,7 +10,7 @@ describe('Utils', () => {
         expect(applyReplacements('{{ one }}{{ o }}{{ one }}', { one: '1', o: '0' })).toEqual('101');
     });
 
-    it('Runs replacements as scripts', () => {
+    it('Evaluates replacements JavaScript', () => {
         expect(applyReplacements('Foo {{ bar || \'Fallback\' }}', { bar: 'Bar' })).toEqual('Foo Bar');
         expect(applyReplacements('Foo {{ bar || \'Bar\' }}')).toEqual('Foo Bar');
         expect(applyReplacements('Foo {{ bar || uuid() }}')).toMatch(
