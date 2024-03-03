@@ -194,6 +194,18 @@ Deletes a document in the POD.
 
 Nothing.
 
+### `cy.solidAuthorize()`
+
+Accepts the authorization form. This command is usually necessary when you have already logged in to your POD and you're reconnecting after a page reload.
+
+#### Arguments
+
+None.
+
+#### Yields
+
+Nothing.
+
 ### `cy.solidLogin()`
 
 Authenticates using the test account indicated in [the configuration](#configuration). This command should be called once the authentication process has been started and the application has been redirected to the identity provider.

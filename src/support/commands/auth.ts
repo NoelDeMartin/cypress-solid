@@ -1,5 +1,16 @@
 import { config, serverUrl, webId } from '../../shared';
 
+export function solidAuthorize(): void {
+    cy.origin(serverUrl(), { args: { accountWebId: webId() } }, ({ accountWebId }) => {
+        cy.contains(accountWebId);
+
+        // TODO wait for JS to be ready instead (at the moment, clicking the button too early doesn't work)
+        cy.wait(200);
+
+        cy.contains('button', 'Authorize').click();
+    });
+}
+
 export function solidLogin(): void {
     cy.origin(
         serverUrl(),
