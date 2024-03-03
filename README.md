@@ -449,6 +449,30 @@ it('Watch a movie', () => {
 });
 ```
 
+#### Replacements evaluation
+
+The text within `{{}}` is actually treated as JavaScript and evaluated before rendering, so you can do things like `{{ name || 'Fallback' }}` in your fixture files.
+
+Additionally, there are some helper functions you can use:
+
+-   `now()` returns the current date in ISO string format.
+-   `date('2024-03-03')` returns the [parsed date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse) in ISO string format.
+-   `uuid()` returns a random UUID.
+
+Here's an example of a complex fixture file used to test a SPARQL query:
+
+```sparql
+INSERT DATA {
+    @prefix schema: <https://schema.org/>.
+    @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+    <#{{ resourceHash || uuid() }}>
+        a schema:Movie ;
+        schema:name {{ name || 'Spirited Away' }} ;
+        schema:datePublished "{{ datePublished || date('2001-07-20') }}"^^xsd:dateTime .
+}
+```
+
 ### Wildcards
 
 Similarly, asserting some data that has been creating at runtime may be challenging. Wildcards can be used to run regular expression matches in assertions. They use the `[[regex]]` syntax.
