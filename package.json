@@ -8,7 +8,7 @@
     "repository": "github:noeldemartin/cypress-solid",
     "scripts": {
         "build": "rm -rf dist && npm run build:support && npm run build:plugin && npm run build:types",
-        "build:plugin": "esbuild src/plugin/index.ts --format=cjs --bundle --sourcemap --outfile=dist/plugin.js --external:@noeldemartin/utils --external:@noeldemartin/solid-utils --external:soukai --external:soukai-solid --external:@inrupt/solid-client-authn-core --external:debug",
+        "build:plugin": "esbuild src/plugin/index.ts --format=cjs --bundle --sourcemap --outfile=dist/plugin.js --external:@noeldemartin/utils --external:@noeldemartin/solid-utils --external:soukai --external:soukai-solid --external:@inrupt/solid-client-authn-core --external:debug --platform=node",
         "build:support": "esbuild src/support/index.ts --format=cjs --bundle --sourcemap --outfile=dist/index.js --external:@noeldemartin/utils --external:@noeldemartin/solid-utils",
         "build:types": "noeldemartin-build-types && ./scripts/build-config-types.js",
         "lint": "noeldemartin-lint src",
@@ -28,7 +28,7 @@
     "license": "MIT",
     "dependencies": {
         "@inrupt/solid-client-authn-core": "^1.17.5",
-        "@noeldemartin/solid-utils": "^0.3.0",
+        "@noeldemartin/solid-utils": "^0.4.0",
         "@noeldemartin/utils": "^0.5.1",
         "debug": "^4.3.4",
         "soukai": "^0.5.2",

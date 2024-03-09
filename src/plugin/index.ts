@@ -1,3 +1,4 @@
+import fileExists from './tasks/file-exists';
 import request from './tasks/request';
 import reset from './tasks/reset';
 import type { CypressSolidConfig } from '../shared';
@@ -7,7 +8,7 @@ export function setupSolidNodeEvents(
     config: Cypress.PluginConfigOptions,
     solidConfig: Partial<CypressSolidConfig> = {},
 ): Cypress.PluginConfigOptions {
-    on('task', { __solidRequest__: request, __solidReset__: reset });
+    on('task', { __fileExists__: fileExists, __solidRequest__: request, __solidReset__: reset });
 
     config['__solid__'] = {
         serverUrl: 'http://localhost:3000',

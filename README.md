@@ -126,7 +126,7 @@ Here's the complete list of available options:
 
 ## Commands
 
-### `cy.fixtureWithReplacements(filePath, replacements)`
+### `cy.fixtureWithReplacements(path, replacements)`
 
 Loads a fixture file with [replacements](#replacements-and-wildcards) applied.
 
@@ -135,7 +135,7 @@ Loads a fixture file with [replacements](#replacements-and-wildcards) applied.
 <!-- prettier-ignore-start -->
 | Name         | Default | Description |
 | ------------ | ------- | ----------- |
-| filePath     | -       | Fixture file path, relative to your [fixtures folder](https://docs.cypress.io/guides/references/configuration#Folders--Files). |
+| path         | -       | Fixture file path, relative to your [fixtures folder](https://docs.cypress.io/guides/references/configuration#Folders--Files). |
 | replacements | `{}`    | Object with replacements to apply on the fixture. [Learn more about replacements](#replacements-and-wildcards). |
 <!-- prettier-ignore-end -->
 
@@ -160,18 +160,18 @@ Creates a container in the POD.
 
 Nothing.
 
-### `cy.solidCreateDocument(path, fixture, replacements?)`
+### `cy.solidCreateDocument(path, turtleOrFixture, replacements?)`
 
 Creates a document in the POD.
 
 #### Arguments
 
 <!-- prettier-ignore-start -->
-| Name         | Default       | Description |
-| ------------ | ------------- | ----------- |
-| path         | -             | Relative document path. For example, to create a document at `http://localhost:3000/alice/tasks/1`, you would use `'/tasks/1'`. |
-| fixture      | -             | Cypress fixture path with the contents of the document in Turtle format. For example, for a fixture at `cypress/fixtures/task.ttl` you would use `'task.ttl'`. |
-| replacements | `{}`          | Object with replacements to apply on the fixture before creating the document. [Learn more about replacements](#replacements-and-wildcards). |
+| Name            | Default       | Description |
+| --------------- | ------------- | ----------- |
+| path            | -             | Relative document path. For example, to create a document at `http://localhost:3000/alice/tasks/1`, you would use `'/tasks/1'`. |
+| turtleOrFixture | -             | Contents of the document in Turtle format, or the path to a Cypress fixture including the contents. For example, for a fixture at `cypress/fixtures/task.ttl` you would use `'task.ttl'`. |
+| replacements    | `{}`          | Object with replacements to apply on the contents before creating the document. [Learn more about replacements](#replacements-and-wildcards). |
 <!-- prettier-ignore-end -->
 
 #### Yields
@@ -267,18 +267,18 @@ None.
 
 Nothing.
 
-### `cy.solidUpdateDocument(path, fixture, replacements?)`
+### `cy.solidUpdateDocument(path, sparqlOrFixture, replacements?)`
 
 Updates a document in the POD.
 
 #### Arguments
 
 <!-- prettier-ignore-start -->
-| Name         | Default       | Description |
-| ------------ | ------------- | ----------- |
-| path         | -             | Relative document path. For example, to update a document at `http://localhost:3000/alice/tasks/1`, you would use `'/tasks/1'`. |
-| fixture      | -             | Cypress fixture path with the SPARQL updates to apply in the document. For example, for a fixture at `cypress/fixtures/update-task.sparql` you would use `'update-task.sparql'`. |
-| replacements | `{}`          | Object with replacements to apply on the fixture before creating the document. [Learn more about replacements](#replacements-and-wildcards). |
+| Name            | Default       | Description |
+| --------------- | ------------- | ----------- |
+| path            | -             | Relative document path. For example, to update a document at `http://localhost:3000/alice/tasks/1`, you would use `'/tasks/1'`. |
+| sparqlOrFixture | -             | SPARQL updates to apply in the document, or the path to a Cypress fixture including the query. For example, for a fixture at `cypress/fixtures/update-task.sparql` you would use `'update-task.sparql'`. |
+| replacements    | `{}`          | Object with replacements to apply on the query before creating the document. [Learn more about replacements](#replacements-and-wildcards). |
 <!-- prettier-ignore-end -->
 
 #### Yields

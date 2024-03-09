@@ -1,8 +1,8 @@
-import { applyReplacements } from './utils';
+import { applyReplacements } from './replacements';
 
 declare const expect: jest.Expect;
 
-describe('Utils', () => {
+describe('Replacements', () => {
 
     it('Applies replacements', () => {
         expect(applyReplacements('Foo {{bar}}', { bar: 'Bar' })).toEqual('Foo Bar');
