@@ -12,6 +12,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 -   `cy.solidCreateDocument()` and `cy.solidUpdateDocument()` commands now also accept the raw Turtle or SPARQL instead of a fixture path.
 -   Javascript evaluation in replacement templates, with `now()`, `date('2024-03-03')`, and `uuid()` helpers.
 
+### Fixed
+
+-   `exports` declaration in `package.json`, projects not using TypeScript failed running without this.
+
 ## [v0.1.3](https://github.com/NoelDeMartin/cypress-solid/releases/tag/v0.1.3) - 2024-01-13
 
 ### Fixed

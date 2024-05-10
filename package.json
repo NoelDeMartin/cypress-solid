@@ -24,6 +24,11 @@
         "support.d.ts",
         "support.js"
     ],
+    "exports": {
+        ".": "./dist/index.js",
+        "./config": "./config.js",
+        "./support": "./support.js"
+    },
     "author": "Noel De Martin",
     "license": "MIT",
     "dependencies": {
