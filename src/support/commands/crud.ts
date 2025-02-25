@@ -3,6 +3,7 @@ import { normalizeSparql } from '@noeldemartin/solid-utils';
 import { applyReplacements } from '../lib/replacements';
 import { fixtureOrText } from '../lib/fixtures';
 import { podUrl } from '../../shared';
+import type { CypressSolidResponse } from '../../shared';
 import type { Replacements } from '../lib/replacements';
 
 export function solidCreateContainer(path: string, name: string = 'Container'): void {
@@ -24,8 +25,12 @@ export function solidCreateContainer(path: string, name: string = 'Container'): 
     });
 }
 
-export function solidCreateDocument(path: string, turtleOrFixture: string, replacements: Replacements = {}): void {
-    fixtureOrText(turtleOrFixture).then((body) =>
+export function solidCreateDocument(
+    path: string,
+    turtleOrFixture: string,
+    replacements: Replacements = {},
+): Cypress.Chainable<CypressSolidResponse> {
+    return fixtureOrText(turtleOrFixture).then((body) =>
         cy.solidRequest(podUrl(path), {
             method: 'PUT',
             headers: { 'Content-Type': 'text/turtle' },
@@ -33,16 +38,20 @@ export function solidCreateDocument(path: string, turtleOrFixture: string, repla
         }));
 }
 
-export function solidDeleteDocument(path: string): void {
-    cy.solidRequest(podUrl(path), { method: 'DELETE' });
+export function solidDeleteDocument(path: string): Cypress.Chainable<CypressSolidResponse> {
+    return cy.solidRequest(podUrl(path), { method: 'DELETE' });
 }
 
 export function solidReadDocument(path: string): Cypress.Chainable<string> {
     return cy.solidRequest(podUrl(path)).then((response) => response.body);
 }
 
-export function solidUpdateDocument(path: string, sparqlOrFixture: string, replacements: Replacements = {}): void {
-    fixtureOrText(sparqlOrFixture).then((body) =>
+export function solidUpdateDocument(
+    path: string,
+    sparqlOrFixture: string,
+    replacements: Replacements = {},
+): Cypress.Chainable<CypressSolidResponse> {
+    return fixtureOrText(sparqlOrFixture).then((body) =>
         cy.solidRequest(podUrl(path), {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/sparql-update' },
