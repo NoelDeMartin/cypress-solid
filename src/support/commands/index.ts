@@ -1,9 +1,11 @@
+import * as assertionsCommands from './assertions';
 import * as authCommands from './auth';
 import * as crudCommands from './crud';
 import * as fixturesCommands from './fixtures';
 import * as tasksCommands from './tasks';
 
 export const solidCommands = {
+    ...assertionsCommands,
     ...authCommands,
     ...crudCommands,
     ...fixturesCommands,

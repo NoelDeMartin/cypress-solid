@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 
 -   CRUD commands such as `cy.solidCreateDocument` and `cy.solidDeleteDocument` now yield the request response.
+-   JsonLD assertions with `cy.assertJsonLD`.
 
 ## [v0.1.4](https://github.com/NoelDeMartin/cypress-solid/releases/tag/v0.1.4) - 2024-05-10
 
