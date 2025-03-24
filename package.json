@@ -2,7 +2,9 @@
     "name": "cypress-solid",
     "version": "0.2.0",
     "type": "module",
-    "sideEffects": false,
+    "sideEffects": [
+        "./dist/support.js"
+    ],
     "exports": {
         ".": {
             "types": "./dist/cypress-solid.d.ts",
@@ -36,7 +38,7 @@
     },
     "dependencies": {
         "@inrupt/solid-client-authn-core": "^2.3.0",
-        "@noeldemartin/solid-utils": "0.6.0-next.95fe731be0689c25d9040cc1411e27c49f69901d",
+        "@noeldemartin/solid-utils": "^0.6.0-next.956cbec11a55691bab3170059fa908865d683e20",
         "@noeldemartin/utils": "0.7.0-next.5c206fa7d2c7aa3aa156d38935403ee1e4866f59",
         "debug": "^4.4.0",
         "soukai": "0.6.0-next.54c40e47cdcc77da62c9eeb0a79251138d2067e3",
@@ -51,7 +53,7 @@
         "cypress": "^14.2.0",
         "typescript": "^5.8.2",
         "vite": "^6.2.2",
-        "vite-plugin-dts": "^4.5.3",
+        "vite-plugin-dts": "4.5.0",
         "vitest": "^3.0.9"
     },
     "eslintConfig": {
