@@ -1,7 +1,7 @@
 import { isObject, toString } from '@noeldemartin/utils';
 import type { ClosureArgs } from '@noeldemartin/utils';
 
-import { config } from '../../shared';
+import { config } from '../shared';
 
 export function solidTask<TArgs extends ClosureArgs, TResult = unknown>(
     name: string,

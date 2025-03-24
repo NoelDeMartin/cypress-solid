@@ -1,10 +1,10 @@
 import { normalizeSparql } from '@noeldemartin/solid-utils';
 
-import { applyReplacements } from '../lib/replacements';
-import { fixtureOrText } from '../lib/fixtures';
+import { applyReplacements } from '../replacements';
+import { fixtureOrText } from '../fixtures';
 import { podUrl } from '../../shared';
 import type { CypressSolidResponse } from '../../shared';
-import type { Replacements } from '../lib/replacements';
+import type { Replacements } from '../replacements';
 
 export function solidCreateContainer(path: string, name: string = 'Container'): void {
     const containerUrl = podUrl(path);

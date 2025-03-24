@@ -1,6 +1,6 @@
-import { applyReplacements } from './replacements';
+import { describe, expect, it } from 'vitest';
 
-declare const expect: jest.Expect;
+import { applyReplacements } from './replacements';
 
 describe('Replacements', () => {
 

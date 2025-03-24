@@ -1,5 +1,3 @@
-/dist
-/node_modules
-/tmp
-config.d.ts
 *.tgz
+dist
+node_modules

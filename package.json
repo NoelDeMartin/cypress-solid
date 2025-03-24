@@ -1,57 +1,58 @@
 {
     "name": "cypress-solid",
-    "version": "0.1.4",
-    "description": "Cypress Plugin to test applications using the Solid Protocol",
-    "main": "dist/index.js",
-    "types": "dist/cypress-solid.d.ts",
+    "version": "0.2.0",
+    "type": "module",
     "sideEffects": false,
-    "repository": "github:noeldemartin/cypress-solid",
-    "scripts": {
-        "build": "rm -rf dist && npm run build:support && npm run build:plugin && npm run build:types",
-        "build:plugin": "esbuild src/plugin/index.ts --format=cjs --bundle --sourcemap --outfile=dist/plugin.js --external:@noeldemartin/utils --external:@noeldemartin/solid-utils --external:soukai --external:soukai-solid --external:@inrupt/solid-client-authn-core --external:debug --platform=node",
-        "build:support": "esbuild src/support/index.ts --format=cjs --bundle --sourcemap --outfile=dist/index.js --external:@noeldemartin/utils --external:@noeldemartin/solid-utils",
-        "build:types": "noeldemartin-build-types && ./scripts/build-config-types.js",
-        "lint": "noeldemartin-lint src",
-        "publish-next": "noeldemartin-publish-next",
-        "test": "jest --verbose"
+    "exports": {
+        ".": {
+            "types": "./dist/cypress-solid.d.ts",
+            "default": "./dist/cypress-solid.js"
+        },
+        "./config": {
+            "types": "./dist/config.d.ts",
+            "default": "./dist/config.js"
+        },
+        "./support": {
+            "types": "./dist/support.d.ts",
+            "default": "./dist/support.js"
+        }
     },
     "files": [
-        "dist",
         "src",
-        "CHANGELOG.md",
-        "config.d.ts",
-        "config.js",
-        "support.d.ts",
-        "support.js"
+        "dist"
     ],
-    "exports": {
-        ".": "./dist/index.js",
-        "./config": "./config.js",
-        "./support": "./support.js"
-    },
-    "author": "Noel De Martin",
     "license": "MIT",
+    "author": "Noel De Martin",
+    "repository": "github:NoelDeMartin/cypress-solid",
+    "peerDependencies": {
+        "cypress": "*"
+    },
+    "scripts": {
+        "build": "vite build && ./scripts/fix-types.sh",
+        "lint": "noeldemartin-lint src",
+        "test": "vitest --run",
+        "test:ci": "vitest --run --reporter verbose",
+        "verify": "noeldemartin-verify"
+    },
     "dependencies": {
-        "@inrupt/solid-client-authn-core": "^1.17.5",
-        "@noeldemartin/solid-utils": "0.5.0-next.612e9e93903ec33bbcba7105ed2a8580ed2d754c",
-        "@noeldemartin/utils": "^0.5.1",
-        "debug": "^4.3.4",
-        "soukai": "^0.5.2",
-        "soukai-solid": "^0.5.2"
+        "@inrupt/solid-client-authn-core": "^2.3.0",
+        "@noeldemartin/solid-utils": "0.6.0-next.95fe731be0689c25d9040cc1411e27c49f69901d",
+        "@noeldemartin/utils": "0.7.0-next.5c206fa7d2c7aa3aa156d38935403ee1e4866f59",
+        "debug": "^4.4.0",
+        "soukai": "0.6.0-next.54c40e47cdcc77da62c9eeb0a79251138d2067e3",
+        "soukai-solid": "0.6.0-next.72025fe4320cd9c043aca3885d21d233dd90e8a4"
     },
     "devDependencies": {
         "@noeldemartin/eslint-config-typescript": "^0.1.2",
-        "@noeldemartin/scripts": "^0.2.1",
+        "@noeldemartin/scripts": "0.3.0-next.2dfd366e59e45ecf5ead1a617e4d0e870dbea507",
+        "@tsconfig/node22": "^22.0.0",
         "@types/debug": "^4.1.12",
-        "@types/jest": "^29.5.12",
-        "cypress": "^13.6.1",
-        "esbuild": "^0.19.9",
-        "eslint": "^8.55.0",
-        "jest": "^29.7.0",
-        "prettier": "^3.1.1",
-        "prettier-eslint-cli": "^8.0.1",
-        "ts-jest": "^29.1.2",
-        "typescript": "^5.3.3"
+        "@types/node": "^22.13.10",
+        "cypress": "^14.2.0",
+        "typescript": "^5.8.2",
+        "vite": "^6.2.2",
+        "vite-plugin-dts": "^4.5.3",
+        "vitest": "^3.0.9"
     },
     "eslintConfig": {
         "extends": [

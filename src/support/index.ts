@@ -1,11 +1,3 @@
-import { installChaiPlugin } from '@noeldemartin/solid-utils';
+import { setupSolidSupport } from 'cypress-solid/lib';
 
-import addCommands from './commands';
-
-export * from './commands';
-export * from '../shared';
-
-export function setupSolidSupport(): void {
-    addCommands();
-    installChaiPlugin();
-}
+setupSolidSupport();

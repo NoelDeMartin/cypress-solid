@@ -182,7 +182,7 @@ export async function authenticate(): Promise<typeof fetch> {
             throw new Error(json.message || json.name);
         }
 
-        authenticatedFetch = await buildAuthenticatedFetch(fetch, json.access_token, { dpopKey });
+        authenticatedFetch = await buildAuthenticatedFetch(json.access_token, { dpopKey });
     }
 
     return authenticatedFetch;

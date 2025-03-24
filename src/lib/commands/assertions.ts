@@ -1,5 +1,6 @@
-import { jsonldEquals } from '@noeldemartin/solid-utils';
-import type { EqualityResult, JsonLD } from '@noeldemartin/solid-utils';
+import { jsonldEquals } from '@noeldemartin/solid-utils/testing';
+import type { JsonLD } from '@noeldemartin/solid-utils';
+import type { EqualityResult } from '@noeldemartin/solid-utils/testing';
 
 export function compareJsonLD(expected: JsonLD, actual: JsonLD): Cypress.Chainable<EqualityResult> {
     return Cypress.Promise.cast(jsonldEquals(expected, actual)) as unknown as Cypress.Chainable<EqualityResult>;
