@@ -29,6 +29,8 @@ export default defineConfig({
             external: [
                 '@inrupt/solid-client-authn-core',
                 '@noeldemartin/solid-utils',
+                '@noeldemartin/solid-utils/testing',
+                '@noeldemartin/solid-utils/chai',
                 '@noeldemartin/utils',
                 'debug',
                 'node:fs',

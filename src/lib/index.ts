@@ -1,4 +1,4 @@
-import { installChaiSolidAssertions } from '@noeldemartin/solid-utils/testing';
+import { installChaiSolidAssertions } from '@noeldemartin/solid-utils/chai';
 
 import addCommands from './commands';
 

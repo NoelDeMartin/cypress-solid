@@ -38,7 +38,7 @@
     },
     "dependencies": {
         "@inrupt/solid-client-authn-core": "^2.3.0",
-        "@noeldemartin/solid-utils": "^0.6.0-next.956cbec11a55691bab3170059fa908865d683e20",
+        "@noeldemartin/solid-utils": "0.6.0-next.508449b33de64b0bcade86b642c9793381434231",
         "@noeldemartin/utils": "0.7.0-next.5c206fa7d2c7aa3aa156d38935403ee1e4866f59",
         "debug": "^4.4.0",
         "soukai": "0.6.0-next.54c40e47cdcc77da62c9eeb0a79251138d2067e3",

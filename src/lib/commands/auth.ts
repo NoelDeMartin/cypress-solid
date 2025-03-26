@@ -1,3 +1,5 @@
+import { escapeRegexText } from '@noeldemartin/utils';
+
 import { config, serverUrl, webId } from '../../shared';
 
 export function solidAuthorize(): void {
@@ -8,6 +10,7 @@ export function solidAuthorize(): void {
         cy.wait(200);
 
         cy.contains('button', 'Authorize').click();
+        cy.url().should('match', new RegExp(`^${escapeRegexText(Cypress.config('baseUrl') ?? '')}`));
     });
 }
 
@@ -25,6 +28,7 @@ export function solidLogin(): void {
             cy.wait(200);
 
             cy.contains('button', 'Authorize').click();
+            cy.url().should('match', new RegExp(`^${escapeRegexText(Cypress.config('baseUrl') ?? '')}`));
         },
     );
 }
