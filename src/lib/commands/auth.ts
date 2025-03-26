@@ -1,6 +1,8 @@
-import { escapeRegexText } from '@noeldemartin/utils';
-
 import { config, serverUrl, webId } from '../../shared';
+
+function escapeRegexText(text: string): string {
+    return text.replace(/[[\]{}()*+?.\\^$|]/g, '\\$&');
+}
 
 export function solidAuthorize(): void {
     cy.origin(serverUrl(), { args: { accountWebId: webId() } }, ({ accountWebId }) => {
