@@ -41,6 +41,7 @@
         "@noeldemartin/solid-utils": "next",
         "@noeldemartin/utils": "next",
         "debug": "^4.4.0",
+        "eslint": "^8.57.1",
         "soukai": "next",
         "soukai-solid": "next"
     },
