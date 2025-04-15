@@ -20,9 +20,6 @@ importers:
       debug:
         specifier: ^4.4.0
         version: 4.4.0(supports-color@8.1.1)
-      eslint:
-        specifier: ^8.57.1
-        version: 8.57.1
       soukai:
         specifier: next
         version: 0.6.0-next.8fcc4b28bacb6b17b092c0d21204a715ec9dea55
@@ -48,6 +45,12 @@ importers:
       cypress:
         specifier: ^14.2.0
         version: 14.3.0
+      eslint:
+        specifier: ^8.57.1
+        version: 8.57.1
+      publint:
+        specifier: ^0.3.12
+        version: 0.3.12
       typescript:
         specifier: ^5.8.2
         version: 5.8.3
