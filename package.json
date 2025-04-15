@@ -38,15 +38,15 @@
     },
     "dependencies": {
         "@inrupt/solid-client-authn-core": "^2.3.0",
-        "@noeldemartin/solid-utils": "0.6.0-next.508449b33de64b0bcade86b642c9793381434231",
-        "@noeldemartin/utils": "0.7.0-next.5c206fa7d2c7aa3aa156d38935403ee1e4866f59",
+        "@noeldemartin/solid-utils": "next",
+        "@noeldemartin/utils": "next",
         "debug": "^4.4.0",
-        "soukai": "0.6.0-next.54c40e47cdcc77da62c9eeb0a79251138d2067e3",
-        "soukai-solid": "0.6.0-next.72025fe4320cd9c043aca3885d21d233dd90e8a4"
+        "soukai": "next",
+        "soukai-solid": "next"
     },
     "devDependencies": {
         "@noeldemartin/eslint-config-typescript": "^0.1.2",
-        "@noeldemartin/scripts": "0.3.0-next.2dfd366e59e45ecf5ead1a617e4d0e870dbea507",
+        "@noeldemartin/scripts": "next",
         "@tsconfig/node22": "^22.0.0",
         "@types/debug": "^4.1.12",
         "@types/node": "^22.13.10",
