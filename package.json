@@ -45,6 +45,7 @@
         "soukai-solid": "next"
     },
     "devDependencies": {
+        "@arethetypeswrong/cli": "^0.17.4",
         "@noeldemartin/eslint-config-typescript": "^0.1.2",
         "@noeldemartin/scripts": "next",
         "@tsconfig/node22": "^22.0.0",

@@ -27,6 +27,9 @@ importers:
         specifier: next
         version: 0.6.0-next.c5c1244acbd5c6137e837261d991dcdae2a84f73(soukai@0.6.0-next.8fcc4b28bacb6b17b092c0d21204a715ec9dea55)(web-streams-polyfill@3.3.3)
     devDependencies:
+      '@arethetypeswrong/cli':
+        specifier: ^0.17.4
+        version: 0.17.4
       '@noeldemartin/eslint-config-typescript':
         specifier: ^0.1.2
         version: 0.1.2(eslint@8.57.1)(typescript@5.8.3)
