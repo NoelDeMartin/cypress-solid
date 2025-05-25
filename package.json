@@ -38,11 +38,11 @@
     },
     "dependencies": {
         "@inrupt/solid-client-authn-core": "^2.3.0",
-        "@noeldemartin/solid-utils": "next",
-        "@noeldemartin/utils": "next",
+        "@noeldemartin/solid-utils": "^0.6.1",
+        "@noeldemartin/utils": "^0.7.1",
         "debug": "^4.4.0",
-        "soukai": "next",
-        "soukai-solid": "next"
+        "soukai": "^0.6.1",
+        "soukai-solid": "^0.6.1"
     },
     "devDependencies": {
         "@arethetypeswrong/cli": "^0.17.4",
